@@ -1,13 +1,12 @@
 <?php
 
-
 class Product
 {
     private $db;
 
-    public function __construct($db)
+    public function __construct(IConn $db)
     {
-        $this->db = $db;
+        $this->db = $db->connect();
     }
 
     public function list()
@@ -20,5 +19,4 @@ class Product
 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
-
 }
